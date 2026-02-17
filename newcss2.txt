@@ -1,0 +1,90 @@
+/* --- 1. OVERALL CONTAINER (E-INK RESET) --- */
+.yomitan-popup {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-family: "Iwata GKyoukasho ProN", "Hiragino Sans", "Noto Sans JP", sans-serif !important;
+  border: 2px solid #000000 !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  padding: 10px !important;
+}
+
+/* Force all text to black and backgrounds to white */
+.yomitan-popup * {
+  background: transparent !important;
+  color: #000000 !important;
+  font-family: inherit !important;
+  text-shadow: none !important;
+}
+
+/* --- 2. THE HEADWORD (Reading & Term) --- */
+/* Reduced to 1.1em per your request (half the previous massive size) */
+.yomitan-popup ruby rt, 
+.headword-reading {
+  font-size: 1.1em !important; 
+  font-weight: 700 !important;
+  display: block !important;
+  line-height: 1.2 !important;
+  margin-bottom: 2px !important;
+}
+
+.headword-term {
+  font-size: 1.5em !important;
+  font-weight: 500 !important;
+}
+
+/* --- 3. COMBINING FREQUENCY BOXES --- */
+/* This makes the Expression and Kana frequencies look like one pill */
+.tag[data-category="frequency"] {
+  display: inline-block !important;
+  border: 1px solid #000000 !important;
+  margin-right: -1px !important; /* Overlaps borders to look unified */
+  border-radius: 0px !important; /* Squared look is cleaner on E-ink */
+  padding: 2px 6px !important;
+  font-size: 0.75rem !important;
+  font-weight: bold !important;
+}
+
+/* --- 4. HIDING THE CLUTTER --- */
+/* Hide Jitendex (jitindex.org) labels */
+[data-dictionary*="Jitendex"], 
+[data-dictionary*="jitindex"] {
+  display: none !important;
+}
+
+/* Hide Priority/Common tags (P, News, JLPT, etc.) */
+.tag[data-category="priority"],
+.tag[data-details*="priority"],
+.tag:contains("P"), 
+.tag:contains("Common") {
+  display: none !important;
+}
+
+/* Hide dictionary names entirely */
+.dict-label {
+  display: none !important;
+}
+
+/* --- 5. DEFINITION STYLING --- */
+.yomitan-popup li, 
+.yomitan-popup .gloss-list {
+  font-size: 1.05rem !important;
+  line-height: 1.4 !important;
+  margin-top: 6px !important;
+  list-style-type: decimal !important;
+}
+
+/* Simple divider */
+hr {
+  border: none !important;
+  border-top: 1px solid #000 !important;
+  margin: 12px 0 !important;
+}
+
+/* Scrollbar (thick and black for E-ink) */
+.yomitan-popup::-webkit-scrollbar {
+  width: 10px;
+}
+.yomitan-popup::-webkit-scrollbar-thumb {
+  background: #000000;
+}
