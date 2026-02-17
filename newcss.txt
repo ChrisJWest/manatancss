@@ -1,0 +1,87 @@
+/* --- OVERALL CONTAINER --- */
+.yomitan-popup {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-family: "Iwata GKyoukasho ProN", "Hiragino Sans", "Noto Sans JP", sans-serif !important;
+  border: 2px solid #000000 !important; /* Thicker border for E-ink visibility */
+  border-radius: 0px !important; /* Sharp corners look cleaner on E-ink */
+  box-shadow: none !important; /* Shadows are the enemy of E-ink refresh rates */
+  padding: 10px !important;
+  line-height: 1.5 !important;
+}
+
+/* Force all text to black and backgrounds to white */
+.yomitan-popup * {
+  background: transparent !important;
+  color: #000000 !important;
+  font-family: inherit !important;
+}
+
+/* --- THE HEADWORD (The Big Reading) --- */
+/* This targets the Furigana/Reading specifically */
+.yomitan-popup ruby rt, 
+.headword-reading {
+  font-size: 2.2em !important; /* Massive for E-ink legibility */
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+/* The Kanji Term */
+.headword-term {
+  font-size: 1.6em !important;
+  font-weight: 400 !important;
+  display: block !important;
+  margin-bottom: 5px !important;
+}
+
+/* --- FREQUENCY & TAGS (Keeping the info you need) --- */
+.yomitan-popup span[style*="border-radius"],
+.pronunciation-group-tag,
+.tag {
+  display: inline-block !important;
+  border: 1px solid #000000 !important; /* Outline style for labels */
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-size: 0.75rem !important;
+  font-weight: bold !important;
+  padding: 2px 5px !important;
+  margin-right: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+/* --- DEFINITIONS --- */
+.yomitan-popup li, 
+.yomitan-popup .gloss-list {
+  font-size: 1.1rem !important; /* Slightly larger text */
+  line-height: 1.4 !important;
+  margin-top: 8px !important;
+}
+
+/* Horizontal line between sections */
+hr {
+  border: none !important;
+  border-top: 1px solid #000 !important;
+  margin: 10px 0 !important;
+}
+
+/* --- MINIMALISM: HIDING THE CLUTTER --- */
+/* Hide dictionary names to focus only on definitions & frequency */
+.dict-label {
+  display: none !important;
+}
+
+/* Scrollbar optimized for E-ink (thick and black) */
+.yomitan-popup::-webkit-scrollbar {
+  width: 8px;
+}
+.yomitan-popup::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+/* Fix for the flex-layout issues in the original snippet */
+.yomitan-popup div[style*="flex-shrink: 0"] {
+  display: none !important;
+}
+.yomitan-popup div[style*="flex-grow: 1"] {
+  width: 100% !important;
+}
