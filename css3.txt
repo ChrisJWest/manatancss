@@ -1,0 +1,95 @@
+/* --- 1. THE FONT & CONTAINER --- */
+.yomitan-popup {
+  background: #ffffff !important;
+  color: #000000 !important;
+  /* Serif is much more readable on E-ink for definitions */
+  font-family: "Georgia", "Times New Roman", "MS Mincho", "Hiragino Mincho Pro", serif !important;
+  border: 2px solid #000000 !important;
+  box-shadow: none !important;
+  padding: 12px !important;
+}
+
+/* Force all text to black */
+.yomitan-popup * {
+  background: transparent !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* --- 2. HEADWORD & FURIGANA (Reading on top) --- */
+/* Ensure the word and its reading stack vertically */
+.headword {
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+
+/* The Kanji Term */
+.headword-term {
+  font-size: 1.6em !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+/* The Reading (Furigana Style - Sitting on top) */
+.yomitan-popup ruby rt, 
+.headword-reading {
+  font-size: 0.65em !important; /* Smaller so it doesn't crowd the line */
+  font-weight: 700 !important;
+  /* This ensures it stays on top of the kanji */
+  display: ruby-text !important; 
+  line-height: 1 !important;
+  padding-bottom: 0.2em !important;
+}
+
+/* --- 3. COMBINING FREQUENCY BOXES --- */
+/* This forces all frequency tags to merge into one solid block */
+.tag[data-category="frequency"] {
+  display: inline-flex !important;
+  border: 1px solid #000000 !important;
+  border-radius: 0px !important;
+  margin: 0 !important; /* Remove gaps */
+  padding: 1px 4px !important;
+  font-size: 0.7rem !important;
+  font-family: sans-serif !important; /* Keep numbers in sans-serif */
+}
+
+/* Remove the double-border between combined boxes */
+.tag[data-category="frequency"] + .tag[data-category="frequency"] {
+  border-left: none !important;
+}
+
+/* --- 4. HIDING JITENDEX & NOISE --- */
+/* Specifically targets the Jitendex header/label often found in Manatan */
+.dict-label, 
+[data-dictionary*="Jitendex"], 
+[data-dictionary*="jitindex"],
+header {
+  display: none !important;
+}
+
+/* Hide "Priority" tags like [P] or [News] */
+.tag[data-category="priority"], 
+.tag[data-details*="priority"] {
+  display: none !important;
+}
+
+/* --- 5. DEFINITION READABILITY --- */
+.gloss-list {
+  margin-top: 10px !important;
+  padding-left: 15px !important;
+}
+
+.gloss-item {
+  font-size: 1.1rem !important;
+  line-height: 1.5 !important; /* Increased spacing for better eye tracking */
+  margin-bottom: 6px !important;
+  list-style-type: decimal !important;
+}
+
+/* Scrollbar (wide and black for easy tapping/seeing) */
+.yomitan-popup::-webkit-scrollbar {
+  width: 12px;
+}
+.yomitan-popup::-webkit-scrollbar-thumb {
+  background: #000000;
+}
